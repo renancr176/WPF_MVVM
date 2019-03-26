@@ -6,11 +6,13 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <ListView HorizontalAlignment="Left" Height="399" Margin="10,10,0,0" VerticalAlignment="Top" Width="772">
-        <ListView.View>
-            <GridView>
-                <GridViewColumn/>
-            </GridView>
-        </ListView.View>
-    </ListView>
+    <StackPanel>
+        <TextBox Height="23" 
+                 TextWrapping="Wrap" 
+                 Text="{Binding Texto}"/>
+        <Button HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Command="{Binding TesteCommand}">Teste</Button>
+        <Label Content="{Binding LblTexto}"/>
+    </StackPanel>
 </Window>
