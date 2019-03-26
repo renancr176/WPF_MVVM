@@ -1,4 +1,4 @@
-﻿using WpfApp1.Commands;
+﻿using WpfApp1.Shared;
 
 namespace WpfApp1.ViewModels
 {
