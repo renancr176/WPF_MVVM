@@ -1,4 +1,10 @@
-﻿using WpfApp1.Shared;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using System.Windows;
+using WpfApp1.Models;
+using WpfApp1.Shared;
 
 namespace WpfApp1.ViewModels
 {
@@ -31,11 +37,31 @@ namespace WpfApp1.ViewModels
             }
         }
 
+        public ObservableCollection<TesteModel> _listaTeste;
+        public ObservableCollection<TesteModel> ListaTeste
+        {
+            get { return _listaTeste; }
+            set
+            {
+                _listaTeste = value;
+                OnPropertyChanged("ListaTeste");
+            }
+        }
+
         #endregion
 
         public MainWindowViewModel()
         {
             TesteCommand = new BaseCommand(Teste);
+
+            ListaTeste = new ObservableCollection<TesteModel>()
+            {
+                new TesteModel(){Descricao = "Teste 1", Quantidade = 0},
+                new TesteModel(){Descricao = "Teste 2", Quantidade = 0},
+                new TesteModel(){Descricao = "Teste 3", Quantidade = 0}
+            };
+
+            AlterarLista();
         }
 
         #region Methods
@@ -45,6 +71,23 @@ namespace WpfApp1.ViewModels
             if (Texto.Length > 0) { 
                 LblTexto = Texto;
             }
+        }
+
+        private void AlterarLista()
+        {
+            Task.Run(() =>
+            {
+                while (true)
+                {
+                    Task.Delay(2000).Wait();
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        var rand = new Random();
+                        ListaTeste.Add(new TesteModel() { Descricao = $"Teste {ListaTeste.Count + 1}", Quantidade = rand.Next(100) });
+                        OnPropertyChanged("ListaTeste");
+                    });
+                }
+            });
         }
 
         #endregion

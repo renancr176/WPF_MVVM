@@ -14,5 +14,17 @@
                 VerticalAlignment="Center"
                 Command="{Binding TesteCommand}">Teste</Button>
         <Label Content="{Binding LblTexto}"/>
+        <ListView ItemsSource="{Binding Path=ListaTeste}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Viewbox>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="{Binding Descricao}"></Label>
+                            <Label Content="{Binding Quantidade}"></Label>
+                        </StackPanel>
+                    </Viewbox>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </StackPanel>
 </Window>
