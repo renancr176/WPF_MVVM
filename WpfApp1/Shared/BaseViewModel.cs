@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace WpfApp1.Shared
 {
-    public class BindableBase : INotifyPropertyChanged
+    public abstract class BaseViewModel : INotifyPropertyChanged
     {
         protected virtual void SetProperty<T>(ref T member, T val,
             [CallerMemberName] string propertyName = null)

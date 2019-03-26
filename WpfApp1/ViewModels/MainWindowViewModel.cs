@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows;
@@ -9,7 +8,7 @@ using WpfApp1.Shared;
 namespace WpfApp1.ViewModels
 {
     public class MainWindowViewModel 
-        : BindableBase
+        : BaseViewModel
     {
         #region Properties
 
